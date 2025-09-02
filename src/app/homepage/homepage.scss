@@ -1,5 +1,5 @@
-@import './variables';
-@import './mixins';
+@import './styles/variables';
+@import './styles/mixins';  
 
 // =========================
 // Animations
@@ -61,7 +61,7 @@
   .logo {
     width: 160px;
     height: 60px;
-    @include bg-image($logo-image, contain, left);
+    // @include bg-image($logo-image, contain, left);
   }
 
   .navlinks {
@@ -142,7 +142,7 @@
   .bros-illustration {
     flex: 1;
     height: 400px;
-    @include bg-image($bros-image, contain, center);
+    // @include bg-image($bros-image, contain, center);
     animation: fadeInUp 0.8s ease forwards;
     animation-delay: 0.4s;
   }
@@ -233,11 +233,11 @@
   .feature-image {
     height: 120px;
     margin-bottom: 1rem;
-    @include bg-image(none, contain, center);
+    // @include bg-image(none, contain, center);
 
-    &-1 { @include bg-image($feature-img-1, contain, center); }
-    &-2 { @include bg-image($feature-img-2, contain, center); }
-    &-3 { @include bg-image($feature-img-3, contain, center); }
-    &-4 { @include bg-image($feature-img-4, contain, center); }
+    // &-1 { @include bg-image($feature-img-1, contain, center); }
+    // &-2 { @include bg-image($feature-img-2, contain, center); }
+    // &-3 { @include bg-image($feature-img-3, contain, center); }
+    // &-4 { @include bg-image($feature-img-4, contain, center); }
   }
 }

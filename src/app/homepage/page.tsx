@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import LandingPage from './LandingPage';
 import FeaturesSection from './FeaturesSection';
-import '../styles/homepage.scss';
+import '../homepage/homepage.scss';
 
 const Homepage = () => {
   return (

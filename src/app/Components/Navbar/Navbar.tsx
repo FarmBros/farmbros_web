@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "@/app/Components/Navbar/Navbar.scss";
 
-type Props = {};
+type Props = object;
 
 const Navbar = (props: Props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
