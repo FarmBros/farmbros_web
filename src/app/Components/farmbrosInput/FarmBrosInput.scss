@@ -1,11 +1,19 @@
 .FarmBrosInput {
-    
+    label {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        color: #000;
+
+        input {
+            border: 1px solid #00AD00;
+            background-color: #fff;
+            padding: 0.5rem 1rem;
+            text-align: left;
+        }
+    }
 }
 
-@media only screen and (min-width: 768px ) {
+@media only screen and (min-width: 768px) {}
 
-}
-
-@media only screen and (min-width: 1080px ) {
-    
-}
+@media only screen and (min-width: 1080px) {}

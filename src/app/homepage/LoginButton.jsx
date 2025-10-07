@@ -1,10 +1,13 @@
 import React from 'react';
+import Link from 'next/link';
 
 const LoginButton = () => {
   return (
-    <button className="button button-green">
-      Login
-    </button>
+    <div className="login-button">
+      <Link href="/login" className="button button-green">
+        Login
+      </Link>
+    </div>
   );
 };
 

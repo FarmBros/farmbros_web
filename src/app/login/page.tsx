@@ -1,5 +1,6 @@
 import React from 'react'
 import FarmBrosInput from '../Components/farmbrosInput/FarmBrosInput'
+import "./Styles/LoginPage.scss"
 
 type Props = object
 
