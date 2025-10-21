@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "@/app/Components/Navbar/Navbar.scss";
+import "./Navbar.scss";
 
 type Props = object;
 

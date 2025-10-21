@@ -1,0 +1,163 @@
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #00ff66, #00cc44);
+  font-family: 'Poppins', sans-serif;
+}
+
+.login-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0.5rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 1rem;
+  }
+}
+
+h2 {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1rem;
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: #00cc44;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 40px;
+    border: 2px solid #00ff66;
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+
+    &:focus {
+      border-color: #00cc44;
+    }
+  }
+
+  .toggle {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #00cc44;
+  }
+}
+
+.forgot {
+  text-align: right;
+  margin-bottom: 1rem;
+
+  a {
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: #00cc44;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.login-btn {
+  background-color: #00cc44;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  padding: 12px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #00b33c;
+  }
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 0.9rem;
+  margin: 1.2rem 0;
+
+  span {
+    position: relative;
+    padding: 0 10px;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 40px;
+      height: 1px;
+      background: #ccc;
+    }
+
+    &::before {
+      left: -45px;
+    }
+
+    &::after {
+      right: -45px;
+    }
+  }
+}
+
+.google-signin img {
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+}
+
+.footer {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+
+  a {
+    color: #00cc44;
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
