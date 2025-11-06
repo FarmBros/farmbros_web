@@ -1,5 +1,7 @@
+'use client'
+
 import React, { useState } from "react";
-import "./../styles/ResetPassword.scss";
+import "./resetPassword.scss";
 import { FaUser, FaKey } from "react-icons/fa";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 

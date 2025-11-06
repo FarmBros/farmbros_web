@@ -1,0 +1,8 @@
+@import '../../homepage/styles/mixins';
+@import '../../homepage/styles/variables';
+
+.farmbros-button {
+    @include flex-center(row, unset, center, 0.5rem);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}

@@ -1,18 +1,26 @@
+'use client'
+
 import React, { useState } from "react";
-import "./../styles/SignUp.scss";
+import "./signUp.scss";
 import { FaUser, FaKey, FaEnvelope } from "react-icons/fa";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Image from "next/image";
+import google from "../assets/images/google.png"
+import brosLogo from "../assets/images/farm_bros_icon.png"
+import Link from "next/link";
+import Navbar from "../Components/Navbar/Navbar";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
   return (
+
     <div className="signup-container">
+      <Navbar />
       <div className="signup-card">
         <div className="logo">
-          <Image src="/logo.png" alt="FarmBros logo" />
+          <Image src={brosLogo} alt="FarmBros logo" width={150} />
           <h1>FarmBros</h1>
         </div>
 
@@ -69,11 +77,11 @@ const SignUp = () => {
         </div>
 
         <div className="google-signin">
-          <Image src="https://developers.google.com/identity/images/g-logo.png" alt="Google" />
+          <Image src={google} alt="Google" width={40} />
         </div>
 
         <p className="footer">
-          Already have an account? <a href="#">Sign Up</a>
+          Already have an account? <Link href="/login">Sign In</Link>
         </p>
       </div>
     </div>

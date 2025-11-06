@@ -1,12 +1,12 @@
 @import './variables';
-@import './mixins';  
-
+@import './mixins';
 
 @keyframes fadeInUp {
   0% {
     opacity: 0;
     transform: translateY(20px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -17,27 +17,23 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
 
-// Animation Utility Classes
-.fade-in-up {
-  opacity: 0;
-  animation: fadeInUp 0.8s ease forwards;
-}
+@keyframes float {
 
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 0.8s ease forwards;
-}
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
 
-// Delay utilities for staggered animations
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.4s; }
-.delay-3 { animation-delay: 0.6s; }
-.delay-4 { animation-delay: 0.8s; }
+  50% {
+    transform: translateY(-10px);
+  }
+}
 
 // =========================
 // Global Styles
@@ -45,55 +41,23 @@
 .homepage {
   font-family: $font-primary;
   color: $color-text-dark;
-}
-
-// =========================
-// Navbar
-// =========================
-.navbar {
-  @include container;
-  @include flex-center(row, space-between, center);
-  padding: 1rem 0;
-  animation: fadeIn 0.8s ease forwards;
-
-  .logo {
-    width: 160px;
-    height: 60px;
-    // @include bg-image($logo-image, contain, left);
-  }
-
-  .navlinks {
-    @include flex-center(row, flex-start, center);
-    gap: 2rem;
-
-    a {
-      font-weight: 500;
-      text-decoration: none;
-      color: $color-text-dark;
-      transition: color 0.3s ease;
-
-      &:hover,
-      &.active {
-        color: $color-green;
-      }
-    }
-
-    @include respond(md) {
-      display: none;
-    }
-  }
+  overflow-x: hidden;
 }
 
 // =========================
 // Buttons
 // =========================
 .button {
-  padding: 0.5rem 1.25rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 6px;
   border: none;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
 
   &-green {
     background: $color-green;
@@ -101,6 +65,23 @@
 
     &:hover {
       background: $color-green-dark;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+    }
+  }
+
+  &-dark {
+    background: #1a1a1a;
+    color: $color-text-light;
+
+    &:hover {
+      background: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .play-icon {
+      font-size: 0.8rem;
     }
   }
 }
@@ -109,48 +90,264 @@
 // Landing Page
 // =========================
 .landing-page {
-  @include container;
-  @include flex-center(row, space-between, center);
-  min-height: 80vh;
-  gap: 3rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #7ed957 0%, #5cb85c 100%);
+  position: relative;
+  overflow: hidden;
+  @include flex-center(column, space-between, center, 3rem);
+
+  .landing-content {
+    @include container;
+    @include flex-center(row, unset, center, 0);
+    min-height: calc(100vh - 80px);
+    padding: 2rem 0;
+
+    @include respond(md) {
+      flex-direction: column;
+      text-align: center;
+      gap: 2rem;
+    }
+  }
 
   .intro-text {
     flex: 1;
+    max-width: 500px;
     animation: fadeInUp 0.8s ease forwards;
 
     h1 {
       font-family: $font-secondary;
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .divider {
-      width: 60px;
-      height: 4px;
-      background: $color-green;
+      font-size: 2.5rem;
       margin-bottom: 1.5rem;
+      color: $color-text-dark;
+      line-height: 1.2;
+      font-weight: 700;
     }
 
     p {
-      max-width: 500px;
-      line-height: 1.6;
+      line-height: 1.7;
+      color: $color-text-dark;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+
+      @include respond(md) {
+        justify-content: center;
+      }
     }
   }
 
-  .bros-illustration {
+  .hero-illustration {
     flex: 1;
-    height: 400px;
-    // @include bg-image($bros-image, contain, center);
+    position: relative;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.2s;
+
+    @include respond(md) {
+      height: 350px;
+    }
   }
+
+  .illustration-circle {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #00ff00 0%, #00cc00 100%);
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+
+    @include respond(md) {
+      width: 300px;
+      height: 300px;
+    }
+
+    .farmer-placeholder {
+      position: absolute;
+      bottom: 0;
+      width: 150px;
+      height: 250px;
+      background: linear-gradient(180deg, #d2691e 0%, #8b4513 50%, #1a1a1a 100%);
+      border-radius: 50% 50% 0 0;
+      z-index: 2;
+    }
+
+    .stats-placeholder {
+      position: absolute;
+      top: 20%;
+      right: 10%;
+      width: 120px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .farm-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      .element {
+        position: absolute;
+        border-radius: 8px;
+
+        &.element-cow {
+          bottom: 15%;
+          right: 15%;
+          width: 60px;
+          height: 50px;
+          background: #d2691e;
+        }
+
+        &.element-tree {
+          bottom: 20%;
+          left: 15%;
+          width: 40px;
+          height: 60px;
+          background: #8b4513;
+          border-radius: 50% 50% 0 0;
+        }
+
+        &.element-house {
+          bottom: 25%;
+          left: 35%;
+          width: 50px;
+          height: 45px;
+          background: #cd853f;
+          border-radius: 4px;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -5px;
+            width: 60px;
+            height: 25px;
+            background: #8b0000;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          }
+        }
+      }
+    }
+  }
+
+  .decorative-circles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    .deco-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.2;
+
+      &.large {
+        width: 300px;
+        height: 300px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        bottom: -100px;
+        left: -50px;
+      }
+
+      &.medium {
+        width: 150px;
+        height: 150px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        top: 20%;
+        right: -30px;
+      }
+
+      &.small {
+        width: 80px;
+        height: 80px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        bottom: 30%;
+        left: 10%;
+      }
+    }
+  }
+}
+
+// =========================
+// Smart Farm Manager
+// =========================
+.smart-farm-manager {
+  @include flex-center(row, center, center, 4rem);
+  padding: 5rem 0;
+  background: linear-gradient(to bottom, #ccffd1 0%, #f1f8f4 100%);
+  width: 100%;
 
   @include respond(md) {
     flex-direction: column;
-    text-align: center;
+    gap: 2rem;
+    padding: 3rem 0;
+  }
 
-    .bros-illustration {
-      height: 300px;
+  .smart-icon-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include respond(md) {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  .smart-icon-blob {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #00cc00 0%, #009900 100%);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .smart-icon-content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+
+    .icon-lightbulb,
+    .icon-devices {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .smart-content {
+    flex: 1;
+    max-width: 600px;
+
+    h2 {
+      font-family: $font-secondary;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: $color-text-dark;
+    }
+
+    p {
+      line-height: 1.7;
+      color: #555;
     }
   }
 }
@@ -160,82 +357,175 @@
 // =========================
 .features {
   background: #f8f8f8;
-  padding: 4rem 0;
+  padding: 5rem 0;
 
   h2 {
     text-align: center;
     font-family: $font-secondary;
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: $color-green;
     animation: fadeInUp 0.8s ease forwards;
   }
 
   .features-description {
     text-align: center;
-    max-width: 600px;
-    margin: 0 auto 3rem;
-    line-height: 1.5;
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+    color: #555;
     animation: fadeInUp 0.8s ease forwards;
     animation-delay: 0.2s;
   }
 
-  .features-container {
-    @include container;
-    @include responsive-grid(4, 2rem);
+  .action {
+    margin-top: 2rem;
 
-    @include respond(lg) {
-      @include responsive-grid(2, 2rem);
+    .learn-more-btn {
+      display: flex;
+      margin: 0 auto 3rem;
+      width: fit-content;
     }
+
+  }
+
+  .features-grid {
+    @include container;
+    @include responsive-grid(2, 2rem);
+    margin-top: 3rem;
 
     @include respond(md) {
       @include responsive-grid(1, 2rem);
     }
   }
 
-  .feature-holder {
-    padding: 2rem;
-    border-radius: 12px;
-    text-align: center;
-    color: $color-text-light;
+  .feature-card {
+    @include flex-center(row, space-between, center, 3rem);
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     opacity: 0;
     animation: fadeInUp 0.8s ease forwards;
+    padding: 2rem;
 
-    h3 {
-      margin: 1rem 0;
-      font-family: $font-secondary;
-    }
-
-    p {
-      font-size: 0.95rem;
-      line-height: 1.4;
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     }
 
     &.yellow {
-      background: $color-yellow;
-      color: $color-text-dark;
+      border-top: 4px solid $color-yellow;
     }
 
     &.green {
-      background: $color-green;
+      border-top: 4px solid $color-green;
     }
 
     &.light-green {
-      background: $color-light-green;
+      border-top: 4px solid $color-light-green;
     }
 
     &.brown {
-      background: $color-brown;
+      border-top: 4px solid $color-brown;
     }
   }
+  
+  img {
+    flex: 1;
+    height: 20rem;
+    width: 10rem;
+    object-fit: contain;
+  }
+ 
+  .feature-info {
+    text-align: center;
+    flex: 1;
 
-  .feature-image {
-    height: 120px;
-    margin-bottom: 1rem;
-    // @include bg-image(none, contain, center);
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-    // &-1 { @include bg-image($feature-img-1, contain, center); }
-    // &-2 { @include bg-image($feature-img-2, contain, center); }
-    // &-3 { @include bg-image($feature-img-3, contain, center); }
-    // &-4 { @include bg-image($feature-img-4, contain, center); }
+      &.icon-cow {
+        background: linear-gradient(135deg, $color-yellow 0%, #e6b800 100%);
+      }
+
+      &.icon-corn {
+        background: linear-gradient(135deg, $color-green 0%, #1e7e34 100%);
+      }
+
+      &.icon-farm {
+        background: linear-gradient(135deg, $color-light-green 0%, #5cb85c 100%);
+      }
+
+      &.icon-harvester {
+        background: linear-gradient(135deg, $color-brown 0%, #6b4423 100%);
+      }
+    }
+
+    h3 {
+      font-family: $font-secondary;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: $color-text-dark;
+    }
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #666;
+    }
+  }
+}
+
+// =========================
+// Mobile Advertisement
+// =========================
+.mobile-advertisement {
+  background: linear-gradient(135deg, #7ed957 0%, #5cb85c 100%);
+  padding: 5rem 0;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .mobile-content {
+    @include container;
+    text-align: center;
+  }
+
+  .mobile-mockup {
+    width: 300px;
+    height: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// Animation delays for staggered entrance
+.feature-card {
+  &:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  &:nth-child(4) {
+    animation-delay: 0.4s;
   }
 }

@@ -1,11 +1,49 @@
-.Navbar {
-  background-color: #fff;
+@import '../../homepage/styles/mixins';
+@import '../../homepage/styles/variables';
 
-  .nav-body {
-    padding: 1rem;
+.navbar {
+  @include flex-center(row, space-between, center, 0);
+  width: 80%;
+  padding: 0.5rem 2rem;
+  animation: fadeIn 0.8s ease forwards;
+  background-color: #ffffffca;
+  border-radius: 10px;
+  margin-top: 1rem;
+  
+
+  .farmbros-logo {
+    width: 4rem;
+    height: 4rem;
+    // @include bg-image($logo-image, contain, left);
   }
 
-  .hidden-navigation {
-    display: none;
+  .navlinks {
+    @include flex-center(row, flex-start, center, 1rem);
+
+    a {
+      font-weight: 500;
+      text-decoration: none;
+      color: $color-text-dark;
+      transition: color 0.3s ease;
+      
+      &:hover,
+      &.active {
+        font-weight: bold;
+        color: $color-green;
+      }
+    }
+
+    
+
+    @include respond(md) {
+      display: none;
+    }
+  }
+
+  .login-link {
+    background-color: #00AD00;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    border-radius: 8px;
   }
 }

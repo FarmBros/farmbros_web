@@ -1,17 +1,24 @@
+'use client'
+
 import React, { useState } from "react";
-import "./../styles/Login.scss";
+import "./styles.scss";
 import { FaUser, FaKey } from "react-icons/fa";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Image from "next/image";
+import google from "../assets/images/google.png"
+import brosLogo from "../assets/images/farm_bros_icon.png"
+import Link from "next/link";
+import Navbar from "../Components/Navbar/Navbar";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className="login-container">
+      <Navbar/>
       <div className="login-card">
         <div className="logo">
-          <Image src="/logo.png" alt="FarmBros logo" />
+          <Image src={brosLogo} alt="FarmBros logo" width={150} />
           <h1>FarmBros</h1>
         </div>
 
@@ -39,7 +46,7 @@ const Login = () => {
           </div>
 
           <div className="forgot">
-            <a href="#">Forgot password?</a>
+            <Link href="/reset_password">Forgot password?</Link>
           </div>
 
           <button type="submit" className="login-btn">
@@ -53,13 +60,14 @@ const Login = () => {
 
         <div className="google-signin">
           <Image
-            src="https://developers.google.com/identity/images/g-logo.png"
+            src={google}
             alt="Google"
+            width={50}
           />
         </div>
 
         <p className="footer">
-          Do not have an account? <a href="#">Sign Up</a>
+          Do not have an account? <Link href="/sign_up">Sign Up</Link>
         </p>
       </div>
     </div>

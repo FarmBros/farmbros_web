@@ -1,47 +1,26 @@
+import Image, { StaticImageData } from "next/image";
+import Navbar from "../Components/Navbar/Navbar";
 import "./styles/homepage.scss";
-
-function Group1() {
-  return (
-    <div className="group1">
-      <div className="circle circle-large" />
-      <div className="circle circle-medium" />
-      <div className="circle circle-small" />
-      <div className="circle circle-filled-green" />
-      <div className="circle circle-mini" />
-      <div className="circle circle-mid" />
-      <div className="image-preview" />
-    </div>
-  );
-}
+import illustration from '../assets/images/bros-illustration 1.png'
+import smartBot from '../assets/images/smart-bot.png'
+import animalListing from '../assets/images/Animal_Listing_Logger.png'
+import cropListing from '../assets/images/Crop_Listing_Logger.png'
+import structureListing from '../assets/images/Structure_Listing_Logger.png'
+import equipmentListing from '../assets/images/Equipment_Listing_Logger.png'
 
 function LoginButton() {
   return (
-    <div
-      className="button button-green login-btn"
-      // onClick={() => console.log('Get Started clicked')}
-    >
+    <div className="button button-green login-btn">
       <span>Get Started</span>
     </div>
   );
 }
 
-function LoginButton1() {
+function DownloadButton() {
   return (
-    <div
-      className="button button-black download-btn"
-      // onClick={() => console.log('Download clicked')}
-    >
+    <div className="button button-dark download-btn">
       <span>Download</span>
-      <div className="icon-google-play" />
-    </div>
-  );
-}
-
-function ActionButtons() {
-  return (
-    <div className="action-buttons">
-      <LoginButton />
-      <LoginButton1 />
+      <span className="play-icon">▶</span>
     </div>
   );
 }
@@ -57,200 +36,97 @@ function IntroText() {
         shamba or tracking your harvest, FarmBros puts the power of your entire
         farm in your hands.
       </p>
-      <div className="divider" />
-      <ActionButtons />
+      <div className="button-group">
+        <LoginButton />
+        <DownloadButton />
+      </div>
     </div>
   );
 }
 
-function Navlinks() {
+function HeroIllustration() {
   return (
-    <nav className="navlinks">
-      <a href="#" className="active">
-        Home
-      </a>
-      <a href="#">About</a>
-      <a href="#">Case Studies</a>
-      <a href="#">Contacts</a>
-    </nav>
-  );
-}
-
-function LoginButton2() {
-  return (
-    <div
-      className="button button-green navbar-login-btn"
-      // onClick={() => console.log('Login clicked')}
-    >
-      <span>Login</span>
+    <div className="hero-illustration">
+      <div className="illustration-circle">
+        <Image src={illustration} alt="farmbros_illustration" />
+      </div>
+      <div className="decorative-circles">
+        <div className="deco-circle large" />
+        <div className="deco-circle medium" />
+        <div className="deco-circle small" />
+      </div>
     </div>
-  );
-}
-
-function Navbar() {
-  return (
-    <header className="navbar">
-      <div className="logo" />
-      <Navlinks />
-    </header>
   );
 }
 
 function LandingPage() {
   return (
     <section className="landing-page">
-      <Group1 />
-      <div className="bros-illustration" />
-      <IntroText />
       <Navbar />
+      <div className="landing-content">
+        <IntroText />
+        <HeroIllustration />
+      </div>
     </section>
-  );
-}
-
-function Frame10() {
-  return (
-    <div className="frame10">
-      <div className="frame10-shape" />
-      <div className="frame10-image" />
-    </div>
-  );
-}
-
-function Frame9() {
-  return (
-    <div className="frame9">
-      <h2>Smart Farm Recommendations & Alerts</h2>
-      <p>
-        Our Farm Manager recommendations suggest best planting dates,
-        fertilizer usage, and harvesting times. With instant alerts, you are
-        always one step ahead of problems.
-      </p>
-    </div>
   );
 }
 
 function SmartFarmManager() {
   return (
     <section className="smart-farm-manager">
-      <Frame10 />
-      <Frame9 />
+      <div className="smart-icon-container">
+        <div className="smart-icon-blob" />
+        <div className="smart-icon-content">
+          <Image src={smartBot} alt="" />
+        </div>
+      </div>
+      <div className="smart-content">
+        <h2>Smart Farm Recommendations & Alerts</h2>
+        <p>
+          Our Farm Manager's recommendations suggest best planting dates,
+          fertilizer usage, and harvesting times. With instant alerts, you're
+          always one step ahead of problems
+        </p>
+      </div>
     </section>
   );
 }
 
-function LoginButton3() {
+function LearnMoreButton() {
   return (
-    <div
-      className="button button-green learn-more-btn"
-      // onClick={() => console.log('Learn more clicked')}
-    >
+    <div className="button button-green learn-more-btn">
       <span>Learn more</span>
     </div>
   );
 }
 
-function Frame8() {
-  return (
-    <div className="feature-content">
-      <div className="icon-cow" />
-      <h3>Animal Listing</h3>
-      <p>
-        Animal Listing allows the farmer to register and monitor all livestock
-        on the farm — including type, quantity, and current status — so they can
-        easily keep track of their animals and manage them more effectively.
-      </p>
-    </div>
-  );
+interface ListItem {
+  icon: string;
+  name: string;
+  subtitle?: string;
 }
 
-function FeatureHolder() {
+function FeatureCard({
+  color,
+  icon,
+  title,
+  description,
+  imageUrl,
+}: {
+  color: string;
+  icon: string;
+  title: string;
+  description: string;
+  imageUrl: StaticImageData
+}) {
   return (
-    <div className="feature-holder yellow">
-      <div className="feature-image feature-image-1" />
-      <Frame8 />
-    </div>
-  );
-}
-
-function Frame11() {
-  return (
-    <div className="feature-content">
-      <div className="icon-corn" />
-      <h3>Crop Listing</h3>
-      <p>
-        Crop Listing lets the farmer record and keep track of all crops on the
-        farm — including what is currently planted, how much is being produced,
-        and when it becomes available — making it easy to monitor farm produce
-        at a glance.
-      </p>
-    </div>
-  );
-}
-
-function FeatureHolder1() {
-  return (
-    <div className="feature-holder green">
-      <div className="feature-image feature-image-2" />
-      <Frame11 />
-    </div>
-  );
-}
-
-function Frame12() {
-  return (
-    <div className="feature-content">
-      <div className="icon-farm" />
-      <h3>Structures Listing</h3>
-      <p>
-        Structure Listing lets the farmer record and manage all physical assets
-        on the farm — such as barns, sheds, storage units and housing facilities
-        — so they have a clear overview of available infrastructure and can
-        plan utilization or maintenance accordingly.
-      </p>
-    </div>
-  );
-}
-
-function FeatureHolder2() {
-  return (
-    <div className="feature-holder light-green">
-      <div className="feature-image feature-image-3" />
-      <Frame12 />
-    </div>
-  );
-}
-
-function Frame13() {
-  return (
-    <div className="feature-content">
-      <div className="icon-harvester" />
-      <h3>Equipment Listing</h3>
-      <p>
-        Equipment Listing allows the farmer to keep an inventory of all farm
-        machinery and tools — including their type, availability, and condition
-        — so they can easily track equipment usage and improve operational
-        planning.
-      </p>
-    </div>
-  );
-}
-
-function FeatureHolder3() {
-  return (
-    <div className="feature-holder brown">
-      <div className="feature-image feature-image-4" />
-      <Frame13 />
-    </div>
-  );
-}
-
-function FeaturesContainer() {
-  return (
-    <div className="features-container">
-      <FeatureHolder />
-      <FeatureHolder1 />
-      <FeatureHolder2 />
-      <FeatureHolder3 />
+    <div className={`feature-card ${color}`}>
+        <Image src={imageUrl} alt="" />
+      <div className="feature-info">
+        <div className={`feature-icon ${icon}`} />
+        <h3>{title}</h3>
+        <p>{description}</p>
+      </div>
     </div>
   );
 }
@@ -262,19 +138,56 @@ function Features() {
       <p className="features-description">
         Farmbros is a comprehensive agricultural platform that empowers farmers
         by giving them the tools to easily manage and showcase their resources.
-        Whether it&#39;s listing various crops, animals, equipment, or farm
+        Whether it's listing various crops, animals, equipment, or farm
         structures, Farmbros provides a centralized space where farmers can
         efficiently organize and share their assets with potential buyers,
         partners, and stakeholders.
       </p>
-      <LoginButton3 />
-      <FeaturesContainer />
+      <div className="features-grid">
+        <FeatureCard
+          color="yellow"
+          icon="icon-cow"
+          title="Animal Listing"
+          description="Animal Listing allows the farmer to register and monitor all livestock on the farm — including type, quantity, and current status — so they can easily keep track of their animals and manage them more effectively."
+          imageUrl={animalListing}
+        />
+        <FeatureCard
+          color="green"
+          icon="icon-corn"
+          title="Crop Listing"
+          description="Crop Listing lets the farmer record and keep track of all crops on the farm — including what is currently planted, how much is being produced, and when it becomes available — making it easy to monitor farm produce at a glance."
+          imageUrl={cropListing}
+        />
+        <FeatureCard
+          color="light-green"
+          icon="icon-farm"
+          title="Structures Listing"
+          description="Structure Listing lets the farmer record and manage all physical assets on the farm — such as barns, sheds, storage units and housing facilities — so they have a clear overview of available infrastructure and can plan utilization or maintenance accordingly."
+          imageUrl={structureListing}
+        />
+        <FeatureCard
+          color="brown"
+          icon="icon-harvester"
+          title="Equipment Listing"
+          description="Equipment Listing allows the farmer to keep an inventory of all farm machinery and tools — including their type, availability, and condition — so they can easily track equipment usage and improve operational planning."
+          imageUrl={equipmentListing}
+        />
+      </div>
+      <div className="action">
+        <LearnMoreButton />
+      </div>
     </section>
   );
 }
 
 function MobileAdvertisement() {
-  return <section className="mobile-advertisement" />;
+  return (
+    <section className="mobile-advertisement">
+      <div className="mobile-content">
+        <div className="mobile-mockup" />
+      </div>
+    </section>
+  );
 }
 
 export default function Homepage() {
