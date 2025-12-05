@@ -26,7 +26,7 @@
       color: $color-text-dark;
       transition: color 0.3s ease;
       
-      &:hover,
+      &: hover,
       &.active {
         font-weight: bold;
         color: $color-green;
